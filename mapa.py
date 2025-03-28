@@ -282,4 +282,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    mapa.run(debug=False)
+    mapa.run_server()
