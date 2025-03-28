@@ -19,7 +19,7 @@ import re
 with rasterio.open('./assets/2015/Agencias de cobranza y comunicaciones.tiff') as src:
     bounds = src.bounds  # Obtiene los límites originales del TIFF
     src_crs = src.crs  # Obtiene el Sistema de Referencia de Coordenadas (CRS) original
-    # Transforma los límites a EPSG:4326 (WGS84) para usarlos en mapas web
+    # Transforma los límites a EPSG:4326 (WGS84) para usarlos en apps web
     wgs84_bounds = transform_bounds(src_crs, "EPSG:4326", 
                                     bounds.left, bounds.bottom, 
                                     bounds.right, bounds.top)
@@ -69,12 +69,12 @@ geojson_data = {
 print(wgs84_bounds)
 
 # Instancia la aplicación Dash usando un tema de Bootstrap
-mapa = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME, dbc.icons.BOOTSTRAP])
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME, dbc.icons.BOOTSTRAP])
 
 play_pause_icon = html.I(id = "play_pause", className= "")
 
 # Define el layout de la aplicación con dos columnas: una principal (90%) y una secundaria (10%)
-mapa.layout = html.Div([
+app.layout = html.Div([
     # Primer bloque: 10% de alto y 100% de ancho dividido en 3 columnas
     dbc.Row([
         dbc.Col(
@@ -140,7 +140,7 @@ mapa.layout = html.Div([
         xxl= 2, xl= 2, lg = 2, md = 2, xs = 12
     ) 
     ],style={'width': '100%', 'height': 'auto','margin': '0'}),
-    # Tercer bloque: 80% de alto y 100% de ancho para el mapa
+    # Tercer bloque: 80% de alto y 100% de ancho para el app
 html.Div([
     dl.Map([
         dl.TileLayer(),
@@ -195,7 +195,7 @@ html.Div([
 
 
 # Callback para actualizar la imagen, el slider y el texto del periodo
-@mapa.callback(
+@app.callback(
     [Output("GEOTIFF_ID", "url"),                       # Actualizar la URL de la imagen geoespacial
      Output("slider_periodo", "value"),                 # Actualizar el valor del slider
      Output("periodo_observado", "children")],          # Actualizar el texto del periodo observado
@@ -244,7 +244,7 @@ def update_image_and_slider(actividad, n_intervals, slider_val):
     return url_imagen, nuevo_valor_del_deslizador, periodo_texto
 
 # Callback para reiniciar el contador cuando se cambia la actividad seleccionada
-@mapa.callback(
+@app.callback(
     Output("intervalo", "n_intervals", allow_duplicate=True),
     [Input("actividades-dropdown", "value")],
     prevent_initial_call=True
@@ -253,7 +253,7 @@ def update_interval(actividad):
     return 0  # Reinicia el contador a 0
 
 # Callback para reiniciar el contador cuando alcanza un valor específico (por ejemplo, 94)
-@mapa.callback(
+@app.callback(
     Output("intervalo", "n_intervals"),
     [Input("intervalo", "n_intervals")]
 )
@@ -264,7 +264,7 @@ def recursividad(n):
         return no_update
 
 # Callback para activar/detener el Interval usando el botón (toggle)
-@mapa.callback(
+@app.callback(
     [Output("intervalo", "disabled"),
     Output("play_pause", "className")],
     [Input("start_button", "n_clicks")],
@@ -283,4 +283,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    mapa.run_server()
+    app.run_server()
