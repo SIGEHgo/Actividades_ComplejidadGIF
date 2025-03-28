@@ -1,9 +1,7 @@
 # Importación de las bibliotecas necesarias para la aplicación
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
 import dash_bootstrap_components as dbc  # Importa Dash Bootstrap Components
-from dash import Dash, html, Output, Input, State, no_update
+from dash import Dash, html, Output, Input, State, no_update,dcc
 import dash_leaflet as dl
 import rasterio
 import numpy as np
