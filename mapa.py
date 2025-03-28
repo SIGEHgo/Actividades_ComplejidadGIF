@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 from rasterio.warp import transform_bounds
 import os
 import re
-from flask import Flask
+
 
 # Abre el archivo TIFF y extrae información geoespacial
 with rasterio.open('./assets/2015/Agencias de cobranza y comunicaciones.tiff') as src:
@@ -69,7 +69,7 @@ geojson_data = {
 print(wgs84_bounds)
 
 # Instancia la aplicación Dash usando un tema de Bootstrap
-mapa = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME, dbc.icons.BOOTSTRAP], server= Flask(__name__))
+mapa = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME, dbc.icons.BOOTSTRAP])
 
 play_pause_icon = html.I(id = "play_pause", className= "")
 
