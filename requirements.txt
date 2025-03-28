@@ -1,0 +1,11 @@
+dash
+dash-core-components
+dash-html-components
+dash-bootstrap-components
+dash-leaflet
+rasterio
+numpy
+requests
+beautifulsoup4
+pandas
+plotly
