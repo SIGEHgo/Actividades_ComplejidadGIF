@@ -8,6 +8,7 @@ numpy
 requests
 beautifulsoup4
 pandas
+geopandas
 plotly
 bs4
 rasterio
