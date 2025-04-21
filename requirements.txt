@@ -9,3 +9,5 @@ requests
 beautifulsoup4
 pandas
 plotly
+bs4
+rasterio
