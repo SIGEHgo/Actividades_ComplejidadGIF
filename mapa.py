@@ -1,7 +1,6 @@
 # Importación de las bibliotecas necesarias para la aplicación
 import dash
 import dash_core_components as dcc
-import dash_html_components as html
 import dash_bootstrap_components as dbc  # Importa Dash Bootstrap Components
 from dash import Dash, html, Output, Input, State, no_update
 import dash_leaflet as dl
@@ -284,4 +283,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
