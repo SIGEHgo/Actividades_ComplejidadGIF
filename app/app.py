@@ -73,7 +73,7 @@ geojson_data = {
 server = Flask(__name__)
 
 app = dash.Dash(server=server, external_stylesheets=[dbc.themes.BOOTSTRAP,dbc.icons.FONT_AWESOME,dbc.icons.BOOTSTRAP])
-app.title = 'ICE'
+app.title = 'Actividades Económicas'
 play_pause_icon = html.I(id = "play_pause", className= "")
 
 # Define el layout de la aplicación con dos columnas: una principal (90%) y una secundaria (10%)
@@ -301,4 +301,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    app.run()
+    app.run_server()
