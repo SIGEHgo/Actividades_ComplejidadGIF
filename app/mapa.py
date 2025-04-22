@@ -260,8 +260,8 @@ def update_interval(actividad):
 
 # Callback para reiniciar el contador cuando alcanza un valor específico (por ejemplo, 94)
 @app.callback(
-    Output("intervalo", "n_intervals"),
-    [Input("intervalo", "n_intervals")]
+    Output("intervalo", "n_intervals", allow_duplicate=True),
+    [Input("intervalo", "n_intervals")],prevent_initial_call=True
 )
 def recursividad(n):
     if n >= 35:
