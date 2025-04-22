@@ -5,7 +5,7 @@ Brotli==1.0.9
 click==7.1.2
 dash
 dash-bootstrap-components
-Flask==3.1.1
+Flask==2.2.5
 Flask-Compress
 future==0.18.2
 itsdangerous==2.0.1
