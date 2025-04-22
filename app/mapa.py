@@ -38,10 +38,10 @@ anios = [re.sub(r"Agencias de cobranza y comunicaciones_", "", anio) for anio in
 
 # Define un diccionario que mapea valores numéricos a periodos o años específicos
 diccionario = {
-    0: '2015', 5: '2016A', 10: '2016B', 15: '2017A', 20: '2017B', 
-    25: '2018A', 30: '2018B', 35: '2019A', 40: '2019B', 45: '2020A', 
-    50: '2020B', 55: '2021A', 60: '2021B', 65: '2022A', 70: '2022B', 
-    75: '2023B', 80: '2024A', 85: '2024B'
+    0: '2015', 2: '2016A', 4: '2016B', 6: '2017A', 8: '2017B', 
+    10: '2018A', 12: '2018B', 14: '2019A', 16: '2019B', 18: '2020A', 
+    20: '2020B', 22: '2021A', 24: '2021B', 26: '2022A', 28: '2022B', 
+    30: '2023B', 32: '2024A', 34: '2024B'
 }
 
 foto = "./assets/sigeh3.png"
@@ -225,7 +225,7 @@ def update_image_and_slider(actividad, n_intervals, slider_val):
         nuevo_valor_del_deslizador = slider_val
     else:
         # Si el intervalo es el disparador, es decir, del dcc Interval se actualiza solo cada 5 intervalos
-        if n_intervals % 5 == 0:
+        if n_intervals % 2 == 0:
             print("n_intervals es congruente modulo 5")
             periodo_actual = n_intervals
             nuevo_valor_del_deslizador = n_intervals
