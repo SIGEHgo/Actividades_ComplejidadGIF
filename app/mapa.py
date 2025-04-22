@@ -199,7 +199,7 @@ html.Div([
     [Output("GEOTIFF_ID", "url"),                       # Actualizar la URL de la imagen geoespacial
      Output("slider_periodo", "value"),                 # Actualizar el valor del slider
      Output("periodo_observado", "children"),
-     Output("intervalo", "n_intervals")],          # Actualizar el texto del periodo observado
+     Output("intervalo", "n_intervals", allow_duplicate=True)],          # Actualizar el texto del periodo observado
     [Input("actividades-dropdown", "value"),            # Input para la actividad seleccionada
      Input("intervalo", "n_intervals"),                 # Input para el intervalo de tiempo
      Input("slider_periodo", "value")]                  # Input para el valor del slider
