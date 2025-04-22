@@ -268,12 +268,15 @@ def recursividad(n):
         return no_update
 @app.callback(
     Output("intervalo", "n_intervals"),
-    [Input("slider_periodo", "value")]
+    [Input("slider_periodo", "value"),State("intervalo", "disabled")],
+    prevent_initial_call=True
 )
-def conservarPosicion(value_slider):
+def conservarPosicion(value_slider, disabled):
     print(value_slider)
-    return value_slider
-
+    if(disabled):
+        return value_slider
+    else:
+        return no_update
 # Callback para activar/detener el Interval usando el botón (toggle)
 @app.callback(
     [Output("intervalo", "disabled"),
