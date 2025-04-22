@@ -210,8 +210,10 @@ html.Div([
 
 # Actividad: Nombre de la actividad seleccionada, n_intervals: Número de intervalos, slider_val: Valor del slider
 def update_image_and_slider(actividad, n_intervals, slider_val):
+    print("Se activa callback por:")
     # Determinar qué input disparó el callback
     ctx = dash.callback_context
+    print(ctx.triggered)
     if not ctx.triggered:
         trigger_id = None
     else:
