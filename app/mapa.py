@@ -14,6 +14,7 @@ import plotly.graph_objects as go
 from rasterio.warp import transform_bounds
 import os
 import re
+from flask import Flask
 
 # Abre el archivo TIFF y extrae información geoespacial
 with rasterio.open('./assets/2015/Agencias de cobranza y comunicaciones.tiff') as src:
@@ -66,11 +67,13 @@ geojson_data = {
     }
 
 # Imprime los límites transformados en la consola para verificar la conversión
-print(wgs84_bounds)
+#print(wgs84_bounds)
 
 # Instancia la aplicación Dash usando un tema de Bootstrap
-app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME, dbc.icons.BOOTSTRAP])
+server = Flask(__name__)
 
+app = dash.Dash(server=server, external_stylesheets=[dbc.themes.BOOTSTRAP,dbc.icons.FONT_AWESOME,dbc.icons.BOOTSTRAP])
+app.title = 'ICE'
 play_pause_icon = html.I(id = "play_pause", className= "")
 
 # Define el layout de la aplicación con dos columnas: una principal (90%) y una secundaria (10%)
@@ -226,11 +229,11 @@ def update_image_and_slider(actividad, n_intervals, slider_val):
     else:
         # Si el intervalo es el disparador, es decir, del dcc Interval se actualiza solo cada 5 intervalos
         if n_intervals % 2 == 0:
-            print("n_intervals es congruente modulo 5")
+            #print("n_intervals es congruente modulo 5")
             periodo_actual = n_intervals
             nuevo_valor_del_deslizador = n_intervals
         else:
-            print("No se actualiza el slider")
+            #print("No se actualiza el slider")
             raise dash.exceptions.PreventUpdate     # se lanza una excepción (PreventUpdate) que evita que se realice cualquier actualización. Esto hace que el callback solo procese los intervalos en los que efectivamente se desea actualizar la vista.
     
     # Evitamos que el valor se salga de las claves definidas en el diccionario
