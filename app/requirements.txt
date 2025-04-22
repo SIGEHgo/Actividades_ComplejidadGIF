@@ -2,7 +2,7 @@ pip==21.0.1
 wheel==0.36.2
 setuptools==53.0.0
 Brotli==1.0.9
-click==7.1.2
+click==8.0
 dash
 dash-bootstrap-components
 Flask==2.2.5
