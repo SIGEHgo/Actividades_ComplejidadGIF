@@ -198,7 +198,8 @@ html.Div([
 @app.callback(
     [Output("GEOTIFF_ID", "url"),                       # Actualizar la URL de la imagen geoespacial
      Output("slider_periodo", "value"),                 # Actualizar el valor del slider
-     Output("periodo_observado", "children")],          # Actualizar el texto del periodo observado
+     Output("periodo_observado", "children"),
+     Output("intervalo", "n_intervals")],          # Actualizar el texto del periodo observado
     [Input("actividades-dropdown", "value"),            # Input para la actividad seleccionada
      Input("intervalo", "n_intervals"),                 # Input para el intervalo de tiempo
      Input("slider_periodo", "value")]                  # Input para el valor del slider
@@ -245,7 +246,7 @@ def update_image_and_slider(actividad, n_intervals, slider_val):
     
     # Construir la URL de la imagen geoespacial
     url_imagen = f"./assets/activities/{actividad}/{actividad}_{diccionario.get(periodo_actual, 'Desconocido')}.png"
-    return url_imagen, nuevo_valor_del_deslizador, periodo_texto
+    return url_imagen, nuevo_valor_del_deslizador, periodo_texto, periodo_actual
 
 # Callback para reiniciar el contador cuando se cambia la actividad seleccionada
 @app.callback(
@@ -266,17 +267,7 @@ def recursividad(n):
         return 0  # Reinicia el contador si llega a 94
     else:
         return no_update
-# @app.callback(
-#     Output("intervalo", "n_intervals"),
-#     [Input("slider_periodo", "value"),State("intervalo", "disabled")],
-#     prevent_initial_call=True
-# )
-# def conservarPosicion(value_slider, disabled):
-#     print(value_slider)
-#     if(disabled):
-#         return value_slider
-#     else:
-#         return no_update
+
 # Callback para activar/detener el Interval usando el botón (toggle)
 @app.callback(
     [Output("intervalo", "disabled"),
