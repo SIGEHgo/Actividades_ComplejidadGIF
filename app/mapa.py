@@ -187,7 +187,7 @@ html.Div([
     # Componente Interval (se mantiene fuera de los bloques anteriores)
     dcc.Interval(
         id="intervalo",
-        interval=2000,  # 100 ms
+        interval=500,  # 100 ms
         n_intervals=0,
         disabled=True
     )
