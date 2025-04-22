@@ -187,7 +187,7 @@ html.Div([
     # Componente Interval (se mantiene fuera de los bloques anteriores)
     dcc.Interval(
         id="intervalo",
-        interval=100,  # 100 ms
+        interval=2000,  # 100 ms
         n_intervals=0,
         disabled=True
     )
@@ -262,7 +262,7 @@ def update_interval(actividad):
     [Input("intervalo", "n_intervals")]
 )
 def recursividad(n):
-    if n == 89:
+    if n >= 89:
         return 0  # Reinicia el contador si llega a 94
     else:
         return no_update
