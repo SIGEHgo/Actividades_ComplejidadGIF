@@ -202,7 +202,8 @@ html.Div([
      Output("intervalo", "n_intervals", allow_duplicate=True)],          # Actualizar el texto del periodo observado
     [Input("actividades-dropdown", "value"),            # Input para la actividad seleccionada
      Input("intervalo", "n_intervals"),                 # Input para el intervalo de tiempo
-     Input("slider_periodo", "value")]                  # Input para el valor del slider
+     Input("slider_periodo", "value")] ,                 # Input para el valor del slider
+     prevent_initial_call=True
 )
 
 # Se accede a dash.callback_context para identificar qué entrada fue la que disparó el callback. Esto es importante para determinar cómo se debe actualizar el valor del período.
