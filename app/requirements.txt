@@ -4,6 +4,7 @@ setuptools==53.0.0
 Brotli==1.0.9
 click==8.0
 dash
+bs4
 dash-bootstrap-components
 dash-core-components
 Flask==2.2.5
