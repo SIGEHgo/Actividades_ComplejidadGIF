@@ -266,6 +266,13 @@ def recursividad(n):
         return 0  # Reinicia el contador si llega a 94
     else:
         return no_update
+@app.callback(
+    Output("intervalo", "n_intervals"),
+    [Input("slider_periodo", "value")]
+)
+def conservarPosicion(value_slider):
+    print(value_slider)
+    return value_slider
 
 # Callback para activar/detener el Interval usando el botón (toggle)
 @app.callback(
