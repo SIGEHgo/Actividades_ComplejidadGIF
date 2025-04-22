@@ -262,7 +262,7 @@ def update_interval(actividad):
     [Input("intervalo", "n_intervals")]
 )
 def recursividad(n):
-    if n >= 89:
+    if n >= 35:
         return 0  # Reinicia el contador si llega a 94
     else:
         return no_update
