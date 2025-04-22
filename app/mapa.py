@@ -198,12 +198,10 @@ html.Div([
 @app.callback(
     [Output("GEOTIFF_ID", "url"),                       # Actualizar la URL de la imagen geoespacial
      Output("slider_periodo", "value"),                 # Actualizar el valor del slider
-     Output("periodo_observado", "children"),
-     Output("intervalo", "n_intervals", allow_duplicate=True)],          # Actualizar el texto del periodo observado
+     Output("periodo_observado", "children")],          # Actualizar el texto del periodo observado
     [Input("actividades-dropdown", "value"),            # Input para la actividad seleccionada
      Input("intervalo", "n_intervals"),                 # Input para el intervalo de tiempo
-     Input("slider_periodo", "value")] ,                 # Input para el valor del slider
-     prevent_initial_call=True
+     Input("slider_periodo", "value")]                  # Input para el valor del slider
 )
 
 # Se accede a dash.callback_context para identificar qué entrada fue la que disparó el callback. Esto es importante para determinar cómo se debe actualizar el valor del período.
@@ -247,21 +245,32 @@ def update_image_and_slider(actividad, n_intervals, slider_val):
     
     # Construir la URL de la imagen geoespacial
     url_imagen = f"./assets/activities/{actividad}/{actividad}_{diccionario.get(periodo_actual, 'Desconocido')}.png"
-    return url_imagen, nuevo_valor_del_deslizador, periodo_texto, periodo_actual
+    return url_imagen, nuevo_valor_del_deslizador, periodo_texto
 
 # Callback para reiniciar el contador cuando se cambia la actividad seleccionada
 @app.callback(
     Output("intervalo", "n_intervals", allow_duplicate=True),
-    [Input("actividades-dropdown", "value")],
+    [Input("actividades-dropdown", "value"), Input("slider_periodo", "value")],
     prevent_initial_call=True
 )
-def update_interval(actividad):
-    return 0  # Reinicia el contador a 0
+def update_interval(actividad, slider_val):
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        raise dash.exceptions.PreventUpdate
+
+    trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+
+    if trigger_id == "actividades-dropdown":
+        return 0  # Reset to 0 when dropdown changes
+    elif trigger_id == "slider_periodo":
+        return slider_val  # Set n_intervals to slider value
+    else:
+        raise dash.exceptions.PreventUpdate
 
 # Callback para reiniciar el contador cuando alcanza un valor específico (por ejemplo, 94)
 @app.callback(
-    Output("intervalo", "n_intervals", allow_duplicate=True),
-    [Input("intervalo", "n_intervals")],prevent_initial_call=True
+    Output("intervalo", "n_intervals"),
+    [Input("intervalo", "n_intervals")]
 )
 def recursividad(n):
     if n >= 35:
