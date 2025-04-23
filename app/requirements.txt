@@ -15,7 +15,7 @@ Jinja2==3.0.3
 MarkupSafe==2.1.1
 numpy
 pandas
-geopandas==1.0.1
+geopandas
 plotly
 scikit-learn
 python-dateutil==2.8.2
