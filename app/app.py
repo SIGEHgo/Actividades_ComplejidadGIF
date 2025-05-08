@@ -167,24 +167,23 @@ html.Div([
     ], center=[(wgs84_bounds[1] + wgs84_bounds[3]) / 2, (wgs84_bounds[0] + wgs84_bounds[2]) / 2], zoom=8,
         style={'width': '100%', 'height': '100%'}),
     
-    # Foto fija
-    # html.Div(
-    #     children=[
-    #         html.Img(
-    #             src="./assets/logo_lab.png",  
-    #             style={
-    #                 "width": "10wh",   # Tamaño del ícono
-    #                 "height": "10vh",  # Tamaño del ícono
-    #             }
-    #         )
-    #     ],
-    #     style={ # Estilos CSS aplicados al Div
-    #         "position": "absolute", # El elemento no ocupa espacio en el diseño habitual. Esto significa que otros elementos actúan como si el elemento "absoluto" no existiera.
-    #         "bottom": "2vh",   # Posicionamiento desde el borde inferior
-    #         "left": "15wh",     # Posicionamiento desde el borde izquierdo
-    #         "z-index": "1000"   # Asegura que esté sobre otros elementos
-    #     }
-    # )
+    #Foto fija
+    html.Div(
+        children=[
+            html.Img(
+                src="./assets/Planeacion_SEDECO_Transparente.png",  
+                style={
+                    "height": "4vh",  # Tamaño del ícono
+                }
+            )
+        ],
+        style={ # Estilos CSS aplicados al Div
+            "position": "absolute", # El elemento no ocupa espacio en el diseño habitual. Esto significa que otros elementos actúan como si el elemento "absoluto" no existiera.
+            "bottom": "44vh",   # Posicionamiento desde el borde inferior
+            "left": "5wh",     # Posicionamiento desde el borde izquierdo
+            "z-index": "1000"   # Asegura que esté sobre otros elementos
+        }
+    )
 ], style={'width': '100%', 'height': '100%'}),
     
     # Componente Interval (se mantiene fuera de los bloques anteriores)
