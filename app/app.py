@@ -179,7 +179,7 @@ html.Div([
         ],
         style={ # Estilos CSS aplicados al Div
             "position": "absolute", # El elemento no ocupa espacio en el diseño habitual. Esto significa que otros elementos actúan como si el elemento "absoluto" no existiera.
-            "bottom": "44vh",   # Posicionamiento desde el borde inferior
+            "bottom": "2vh",   # Posicionamiento desde el borde inferior
             "left": "5wh",     # Posicionamiento desde el borde izquierdo
             "z-index": "1000"   # Asegura que esté sobre otros elementos
         }
