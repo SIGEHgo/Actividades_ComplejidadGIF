@@ -158,12 +158,25 @@ html.Div([
         dl.GeoJSON(data=geojson_data,
                    id='geojson',
                    options={'style': {
-                       'color': 'black',
-                       'weight': 0.7,
+                       'color': 'white',
+                       'weight': 3,
                        'opacity': 0.5,
-                       'fillOpacity': 0.0005
+                       'fillColor': '#808080',
+                       'fillOpacity': 0.1
                        }
                    }),
+        dl.GeoJSON(
+            url="assets/regional.geojson",
+            id='geojson2',
+            options={
+            'style': {
+                'color': 'black',
+                'weight': 2,
+                'opacity': 1,
+                'fillOpacity': 0
+            }
+            }
+        ),
     ], center=[(wgs84_bounds[1] + wgs84_bounds[3]) / 2, (wgs84_bounds[0] + wgs84_bounds[2]) / 2], zoom=8,
         style={'width': '100%', 'height': '100%'}),
     
@@ -301,4 +314,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    app.run_server()
+    app.run()
