@@ -259,7 +259,7 @@ def update_image_and_slider(actividad, n_intervals, slider_val):
     periodo_texto = diccionario.get(periodo_actual, 'Desconocido')
     
     # Construir la URL de la imagen geoespacial
-    url_imagen = f"./assets/activities/{actividad}/{actividad}_{diccionario.get(periodo_actual, 'Desconocido')}.png"
+    url_imagen = f"./assets/activities/{actividad}/{diccionario.get(periodo_actual, 'Desconocido')}.png"
     return url_imagen, nuevo_valor_del_deslizador, periodo_texto
 
 # Callback para reiniciar el contador cuando se cambia la actividad seleccionada
@@ -313,4 +313,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    app.run()
+    app.run_server()
