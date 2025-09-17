@@ -42,7 +42,7 @@ diccionario = {
     0: '2015', 2: '2016A', 4: '2016B', 6: '2017A', 8: '2017B', 
     10: '2018A', 12: '2018B', 14: '2019A', 16: '2019B', 18: '2020A', 
     20: '2020B', 22: '2021A', 24: '2021B', 26: '2022A', 28: '2022B', 
-    30: '2023B', 32: '2024A', 34: '2024B'
+    30: '2023B', 32: '2024A', 34: '2024B', 34: '2025A'
 }
 
 foto = "./assets/sigeh3.png"
@@ -313,4 +313,4 @@ def toggle_interval(n_clicks, disabled):
 
 # Inicia el servidor de la aplicación si el script se ejecuta directamente
 if __name__ == '__main__':
-    app.run_server()
+    app.run()
